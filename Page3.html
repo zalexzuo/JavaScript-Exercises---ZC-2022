@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stars Rating</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+</head>
+<style>
+    body {
+        margin: 0px;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        background-color: rgb(35, 35, 35);
+        width: 650px;
+        border: none;
+        box-shadow: 5px 5px 15px blue;
+        border-radius: 10px;
+    }
+
+    nav {
+        font-size: 200%;
+        margin: 0px;
+        background-color: rgb(36, 36, 36);
+        text-align: center;
+    }
+
+    a {
+        margin: 0 auto;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-decoration: none;
+    }
+
+    a:link {
+        color: rgb(109, 109, 109);
+    }
+
+    a:visited {
+        color: rgb(109, 109, 109);
+    }
+
+    a:hover {
+        color: white;
+        text-shadow: 5px 5px 5px blue;
+    }
+
+    a:active {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(0, 145, 255);
+    }
+
+    .outarea {
+        padding: 150px;
+    }
+
+    legend {
+        font-size: 35px;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-left: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-shadow: 4px 4px 4px blue;
+        letter-spacing: 1px
+    }
+
+    .divbox {
+        padding: 50px;
+        text-align: center;
+    }
+
+    img {
+        width: 75px;
+        filter: grayscale(1);
+        padding: 10px;
+    }
+
+    span {
+        font-size: 150%;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1px
+    }
+
+    #starNum {
+        color: yellow;
+    }
+
+    #text2 {
+        font-size: 70%;
+        color: rgb(158, 158, 158);
+        font-style: italic;
+    }
+
+    .lighting {
+        filter: grayscale(0);
+        transform: scale(1.2);
+    }
+
+    .dark {
+        filter: grayscale(1);
+        transform: scale(1.0);
+    }
+</style>
+
+<body>
+    <nav>
+        <a href="" title="Zale Chen" onclick="alert('Zale Chen')"><img src="./images/zuologo.png"
+            style="width: 40px; padding:0;" /></a>
+        <a href="./Page1.html" style="margin-left: 50px;">Multiplication Table</a>
+        <a href="./Page2.html" style="margin-left: 50px;">Form Check</a>
+        <a href="./Page4.html" style="margin-left: 50px;">Pictures Carousel</a>
+    </nav>
+
+
+    <div class="outarea">
+        <fieldset>
+            <legend>Rating</legend>
+
+            <div class="divbox">
+
+                <img id="s1" src="images/star.png" alt="" />
+                <img id="s2" src="images/star.png" alt="" />
+                <img id="s3" src="images/star.png" alt="" />
+                <img id="s4" src="images/star.png" alt="" />
+                <img id="s5" src="images/star.png" alt="" />
+                <br><br><br>
+                <span>Your Rating: <span id="starNum"></span> star(s)<br><span id="text2">Double click to
+                        cancel.</span></span>
+
+            </div>
+
+
+
+        </fieldset>
+    </div>
+    <script>
+        // document.getElementById(this.id).addEventListener("mouseover", oneStar);
+        // document.getElementById(this.id).addEventListener("mouseout", mouseOut);
+
+
+        let stars = document.getElementsByTagName("img");
+        document.getElementById("starNum").innerHTML = "0";
+
+        for (let star of stars) {
+            star.addEventListener("mouseover", mouseOver);
+            star.addEventListener("mouseout", mouseOut);
+            star.addEventListener("click", mouseClick);
+            star.addEventListener("dblclick", doubleClick);
+        }
+
+        stars[0].removeEventListener("mouseover", mouseOver);
+        stars[0].removeEventListener("mouseout", mouseOut);
+
+        function mouseOver() {
+            document.getElementById(this.id).className = "lighting";
+            let fiveStar = document.getElementsByTagName("img");
+            starId = parseInt(this.id.substring(1));
+
+            for (let i = 0; i < starId; i++) {
+                fiveStar[i].className = "lighting";
+            }
+            fiveStar[0].className = "";
+
+            document.getElementById("starNum").innerHTML = starId;
+
+        };
+
+        function mouseOut() {
+            let fiveStar = document.getElementsByTagName("img");
+            starId = parseInt(this.id.substring(1));
+            document.getElementById("starNum").innerHTML = "0";
+
+            for (i = 0; i <= 5; i++) {
+                fiveStar[i].className = "dark";
+            }
+            fiveStar[0].className = "";
+
+        }
+
+        function mouseClick() {
+            let starList = document.getElementsByTagName("img");
+            for (let star of starList) {
+                star.removeEventListener("mouseover", mouseOver);
+                star.removeEventListener("mouseout", mouseOut);
+                star.removeEventListener("click", mouseClick)
+            }
+
+            document.getElementById(this.id).className = "lighting";
+            let fiveStar = document.getElementsByTagName("img");
+            starId = parseInt(this.id.substring(1));
+
+            for (let i = 0; i < starId; i++) {
+                fiveStar[i].className = "lighting";
+            }
+            fiveStar[0].className = "";
+        }
+
+        function doubleClick() {
+            let starList = document.getElementsByTagName("img");
+            console.log(starList)
+
+            for (let star of starList) {
+                star.className = "dark";
+            }
+            document.getElementById("starNum").innerHTML = "0";
+
+            for (let star of starList) {
+                star.addEventListener("mouseover", mouseOver);
+                star.addEventListener("mouseout", mouseOut);
+                star.addEventListener("click", mouseClick)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Check</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+</head>
+<style>
+    body {
+        margin: 0px;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        background-color: rgb(35, 35, 35);
+        width: 500px;
+        border: none;
+        box-shadow: 5px 5px 15px rgb(65, 204, 0);
+        border-radius: 10px;
+    }
+
+    nav {
+        font-size: 200%;
+        margin: 0px;
+        background-color: rgb(36, 36, 36);
+        text-align: center;
+    }
+
+    div {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    a {
+        margin: 0 auto;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-decoration: none;
+    }
+
+    a:link {
+        color: rgb(109, 109, 109);
+    }
+
+    a:visited {
+        color: rgb(109, 109, 109);
+    }
+
+    a:hover {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(65, 204, 0);
+        ;
+    }
+
+    a:active {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(190, 255, 159);
+    }
+
+    .outarea {
+        padding: 100px;
+    }
+
+    legend {
+        font-size: 35px;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-left: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-shadow: 4px 4px 4px rgb(65, 204, 0);
+        letter-spacing: 1px
+    }
+
+    .divbox {
+        padding: 50px;
+        text-align: center;
+    }
+
+    label {
+        margin-left: 30px;
+        color: rgb(65, 204, 0);
+        font-weight: 700;
+        float: left;
+        padding-right: 20px;
+    }
+
+    .des {
+        color: rgb(158, 158, 158);
+        font-size: 80%;
+    }
+
+    .check {
+        color: rgb(190, 255, 159);
+        padding-left: 20px;
+        font-size: 80%;
+        font-weight: 800;
+    }
+</style>
+
+<body>
+    <nav>
+        <a href="" title="Zale Chen" onclick="alert('Zale Chen')"><img src="./images/zuologo.png"
+            style="width: 40px; padding:0;" /></a>
+        <a href="./Page1.html" style="margin-left: 50px;">Multiplication Table</a>
+        <a href="./Page3.html" style="margin-left: 50px;">Stars Rating</a>
+        <a href="./Page4.html" style="margin-left: 50px;">Pictures Carousel</a>
+    </nav>
+
+
+    <div class="outarea">
+        <fieldset>
+            <legend>Form Check</legend>
+            <form action="#" method="post" autocomplete="off">
+
+                <div><label for="idname">姓名:</label>
+                    <input type="text" name="name" id="idname"><span id="namespan" class="check"></span>
+                    <br><span class="des">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        (1.不可空白 2.至少兩個字以上 3.須為全中文)</span>
+                </div>
+
+                <div><label for="idpwd">密碼:</label>
+                    <input type="password" name="pwd" id="idpwd"><span id="pwdspan" class="check" maxlength="10"></span>
+                    <br><span class="des">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        (1.不可空白 2.至少6個字且包含英數字、特殊字元[!@#$%^&*])</span>
+                </div>
+
+                <div><label for="iddate">日期:</label>
+                    <input type="text" name="date" id="iddate" placeholder="yyyy-mm-dd"><span id="datespan"
+                        class="check"></span>
+                    <br><span class="des">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        格式:西元年/月/日 (yyyy-mm-dd)</span>
+                </div>
+            </form>
+        </fieldset>
+
+
+
+
+    </div>
+    </fieldset>
+    </div>
+    <script>
+        document.getElementById("idname").addEventListener("blur", checkName, false);
+        document.getElementById("idpwd").addEventListener("blur", checkPwd, false);
+        document.getElementById("iddate").addEventListener("blur", checkDate, false);
+
+
+        function checkName() {
+            let nameObj = document.getElementById("idname");
+            let nameVal = nameObj.value;
+            let nameValLength = nameVal.length;
+            let meg = document.getElementById("namespan")
+            let con = /^[\u4e00-\u9fff]{2,5}$/;
+
+            console.log(con.test(nameVal))
+
+            if (nameVal == "") {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">姓名欄位不可空白!"
+            } else if (con.test(nameVal)) {
+                meg.innerHTML = "<img src=\"images/OK.png\" width=15 style=\"padding-right:5px \">OK!"
+            } else {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">需為2~5個中文字!"
+            }
+
+        }
+
+
+        function checkPwd() {
+            let pwdObj = document.getElementById("idpwd");
+            let pwdVal = pwdObj.value;
+            let pwdValLength = pwdVal.length;
+            let flag1 = false, flag2 = false, flag3 = false;
+            let meg = document.getElementById("pwdspan")
+
+
+            if (pwdVal == "") {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">密碼欄位不可空白!"
+            } else if (pwdValLength < 6) {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">密碼最少須要6個字元!"
+            } else if (pwdValLength >= 6) {
+                let UCpwdVal = pwdVal.toUpperCase();
+
+                if (/[A-Z]/.test(UCpwdVal)) {
+                    flag1 = true;
+                } else { meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">須包含英文字母!" };
+                if (/[0-9]/.test(pwdVal)) {
+                    flag2 = true;
+                } else { meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">須包含數字!" };
+                if (/[!@#$%^&*]/.test(pwdVal)) {
+                    flag3 = true;
+                    console.log("Test Succeed!")
+                } else { meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">須包含一個特殊字元" };
+
+                if (flag1 && flag2 && flag3) {
+                    meg.innerHTML = "<img src=\"images/OK.png\" width=15 style=\"padding-right:5px \">OK!";
+                }
+            }
+        }
+
+
+
+
+        function checkDate() {
+            let dateObj = document.getElementById("iddate");
+            let meg = document.getElementById("datespan");
+            let strDate = dateObj.value;
+            let createDate = new Date(strDate);
+            let strD = JSON.stringify(createDate);
+
+
+            let re = new RegExp(strDate, "gi");
+            if (strDate == "") {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">日期欄位不可空白!";
+            } else if (strD.match(re)) {
+                meg.innerHTML = "<img src=\"images/OK.png\" width=15 style=\"padding-right:5px \">OK!";
+            } else {
+                meg.innerHTML = "<img src=\"images/X.png\" width=15 style=\"padding-right:5px \">日期格式錯誤!";
+            }
+        }
+    </script>
+</body>
+
+</html>

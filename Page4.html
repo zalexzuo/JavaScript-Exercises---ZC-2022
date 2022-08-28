@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictures Carousel</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+</head>
+<style>
+    body {
+        margin: 0px;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        background-color: rgb(35, 35, 35);
+        width: 650px;
+        border: none;
+        box-shadow: 5px 5px 15px rgb(235, 0, 239);
+        border-radius: 10px;
+    }
+
+    nav {
+        font-size: 200%;
+        margin: 0px;
+        background-color: rgb(36, 36, 36);
+        text-align: center;
+    }
+
+    a {
+        margin: 0 auto;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-decoration: none;
+    }
+
+    a:link {
+        color: rgb(109, 109, 109);
+    }
+
+    a:visited {
+        color: rgb(109, 109, 109);
+    }
+
+    a:hover {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(235, 0, 239);
+        ;
+    }
+
+    a:active {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(242, 155, 245);
+    }
+
+    .outarea {
+        padding: 50px;
+    }
+
+    legend {
+        font-size: 35px;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-left: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-shadow: 4px 4px 4px rgb(235, 0, 239);
+        letter-spacing: 1px
+    }
+
+    .divbox {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .play {
+        width: 350px;
+        padding: 10px;
+        box-shadow: 3px 3px 10px rgb(217, 0, 255);
+        border: 3px solid rgb(242, 155, 245);
+        border-radius: 10px;
+    }
+
+    .play:hover {
+        transform: scale(1.1);
+    }
+
+    .play:active{
+        filter: brightness(0.6);
+    }
+
+    .paws {
+        width: 20px;
+        padding: 0 3px 0 3px;
+
+    }
+
+    .pawsBox {
+        margin-top: 20px;
+    }
+
+    .conBox {
+        margin-top: 20px;
+    }
+
+    .imgBox {
+        margin-top: 20px;
+    }
+
+    .nkbutton {
+        margin-top: 30px;
+    }
+
+    .con {
+        width: 50px;
+        padding: 0 50px 0 50px;
+    }
+
+    #pl,
+    #st {
+        width: 45px;
+        padding: 0;
+    }
+
+    .con:hover {
+        transform: scale(1.2);
+    }
+
+    #bt:hover {
+        transform: scale(1.1);
+    }
+
+    #bt:active {
+        transform: scale(0.9);
+    }
+
+
+    span {
+        font-size: 160%;
+        color: rgb(235, 0, 239);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 2px white;
+    }
+</style>
+
+<body>
+    <nav>
+        <a href="" title="Zale Chen" onclick="alert('Zale Chen')"><img src="./images/zuologo.png"
+            style="width: 40px; padding:0;" /></a>
+        <a href="./Page1.html" style="margin-left: 50px;">Multiplication Table</a>
+        <a href="./Page2.html" style="margin-left: 50px;">Form Check</a>
+        <a href="./Page3.html" style="margin-left: 50px;">Stars Rating</a>
+    </nav>
+
+
+    <div class="outarea">
+        <fieldset>
+            <legend>Picture Carousel</legend>
+
+            <div class="divbox">
+                <span id="nikki">Chihuahua Nikki</span>
+                <div class="imgBox">
+                    <a id="web" href="" target="_blank"><img class="play" src="./images/p1.JPG" /></a>
+                </div>
+
+                <div class="pawsBox">
+                    <img id="b1" class="paws" src="./images/paw.png">
+                    <img id="b2" class="paws" src="./images/paw.png">
+                    <img id="b3" class="paws" src="./images/paw.png">
+                    <img id="b4" class="paws" src="./images/paw.png">
+                    <img id="b5" class="paws" src="./images/paw.png">
+                </div>
+
+                <div class="conBox">
+                    <a class="fakeLink"><img id="last" class="con" src="./images/arrowL.png"></a>
+                    <a class="fakeLink"></a><img id="pl" class="con" src="./images/play.png"></a>
+                    <a class="fakeLink"></a><img id="st" class="con" src="./images/stop.png"></a>
+                    <a class="fakeLink"></a><img id="next" class="con" src="./images/arrowR.png"></a>
+                </div>
+
+                <div class="nkbutton">
+                    <a href="https://line.me/S/sticker/15725643" target="_blank"><img id="bt" src="./images/nkbuton.png"
+                            width="200px"></a>
+                </div>
+
+            </div>
+        </fieldset>
+    </div>
+    <script>
+        let lnk = document.getElementById("web");
+
+
+        let pawList = document.getElementsByClassName("paws");
+        for (let pawEle of pawList) {
+            pawEle.addEventListener("click", choosePic)
+        }
+
+        var count = 1;
+        var sw = true;
+        var pic = document.getElementsByClassName("play")[0];
+
+        function setPic() {
+            if (sw) {
+                s = count.toString();
+                pic.src = `./images/p${s}.JPG`;
+
+                for (let i = 0; i <= 4; i++) {
+                    document.getElementsByClassName("paws")[i].src = "./images/paw.png";
+                    // console.log(document.getElementsByClassName("paws")[i]);
+                };
+                pawList[count - 1].setAttribute("src", "./images/pawC.png")
+
+                switch (count) {
+                    case 1:
+                        lnk.setAttribute("href", "https://en.wikipedia.org/wiki/Chihuahua_(dog)");
+                        break;
+                    case 2:
+                        lnk.setAttribute("href", "https://reurl.cc/MbYQov");
+                        break;
+                    case 3:
+                        lnk.setAttribute("href", "https://imgur.dcard.tw/B81StvOh.jpg");
+                        break;
+                    case 4: ;
+                        lnk.setAttribute("href", "https://reurl.cc/Goz6ad");
+                        break;
+                    case 5: ;
+                        lnk.setAttribute("href", "https://imgur.dcard.tw/faPUYnDh.jpg");
+                        break;
+                }
+
+                console.log(count);
+                count++;
+                if (count > 5) { count = 1; }
+
+            } else { clearInterval(exerClock); }
+        }
+
+        function choosePic() {
+            sw = true;
+            for (let i = 0; i <= 4; i++) {
+                document.getElementsByClassName("paws")[i].src = "./images/paw.png";
+                console.log(document.getElementsByClassName("paws")[i]);
+            };
+            document.getElementById(this.id).src = "./images/pawC.png";
+
+            let idS = this.id.substring(1);
+            count = parseInt(idS);
+            setPic();
+        }
+
+        function stopPlay() {
+            sw = false;
+        }
+        document.getElementById("st").addEventListener("click", stopPlay);
+
+        function startPlay() {
+            sw = true;
+        }
+        document.getElementById("pl").addEventListener("click", startPlay);
+
+
+        document.getElementById("next").addEventListener("click", nextPic);
+        document.getElementById("last").addEventListener("click", lastPic);
+
+        function lastPic() {
+            if (sw == true) { count = count - 2; } else if (sw == false) { count--; }
+            // console.log(count);
+            if (count < 1) { count = 5; };
+
+            for (let i = 0; i <= 4; i++) {
+                document.getElementsByClassName("paws")[i].src = "./images/paw.png";
+                console.log(document.getElementsByClassName("paws")[i]);
+            };
+            pawList[count - 1].setAttribute("src", "./images/pawC.png")
+
+            pic.setAttribute("src", `./images/p${count}.JPG`);
+            sw = false;
+        }
+
+        function nextPic() {
+            sw = false;
+            count++;
+            console.log(count);
+            if (count > 5) { count = 1; };
+            console.log(count);
+
+            for (let i = 0; i <= 4; i++) {
+                document.getElementsByClassName("paws")[i].src = "./images/paw.png";
+                console.log(document.getElementsByClassName("paws")[i]);
+            };
+            pawList[count - 1].setAttribute("src", "./images/pawC.png")
+
+
+            pic.setAttribute("src", `./images/p${count}.JPG`);
+        }
+
+        if (sw) {
+            setPic();
+            let exerClock = setInterval(setPic, 2000);
+        }
+        // else if (sw == false) { clearInterval(exerClock); }
+
+
+
+        ns = true;
+        let NikkiClock = setInterval(() => {
+            if (ns) {
+                document.getElementById("nikki").setAttribute("style", "color: #FF77FF;");
+                ns = false;
+            } else if (ns == false) {
+                document.getElementById("nikki").setAttribute("style", "color: rgb(235, 0, 239)");
+                ns = true;
+            }
+        }, 500);
+
+
+    </script>
+</body>
+
+</html>

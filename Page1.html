@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+</head>
+
+<style>
+    body {
+        margin: 0px;
+        background-color: black;
+        overflow: hidden;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        background-color: rgb(35, 35, 35);
+        width: 600px;
+        border: none;
+        box-shadow: 5px 5px 15px orange;
+        border-radius: 10px;
+    }
+
+    nav {
+        font-size: 200%;
+        margin: 0px;
+        background-color: rgb(36, 36, 36);
+        text-align: center;
+    }
+
+    div {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    a {
+        margin: 0 auto;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-decoration: none;
+    }
+
+    a:link {
+        color: rgb(109, 109, 109);
+    }
+
+    a:visited {
+        color: rgb(109, 109, 109);
+    }
+
+    a:hover {
+        color: white;
+        text-shadow: 5px 5px 5px orange;
+        ;
+    }
+
+    a:active {
+        color: white;
+        text-shadow: 5px 5px 5px rgb(250, 223, 88);
+    }
+
+    .outarea {
+        padding: 100px;
+    }
+
+    legend {
+        font-size: 35px;
+        color: white;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        margin-left: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-shadow: 4px 4px 4px orange;
+        letter-spacing: 1px
+    }
+
+    .divbox {
+        padding: 50px;
+        text-align: center;
+    }
+
+    table {
+        margin: 40px 60px 40px 60px;
+        border-radius: 10px;
+        padding: 20px;
+        border-collapse: collapse;
+    }
+
+
+    td {
+        color: rgb(255, 81, 0);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        padding: 15px;
+        line-height: 25px;
+    }
+
+    td:hover {
+        text-shadow:5px 5px 5px darkorange;
+    }
+
+    tr {
+        margin: 100px;
+        background-color: rgb(246, 255, 165);
+    }
+
+    .st1 {
+        border: 3px solid orange;
+        border-radius: 8px;
+        margin-left: 10px;
+    }
+</style>
+
+<body>
+    <nav>
+        <a href="" title="Zale Chen" onclick="alert('Zale Chen')"><img src="./images/zuologo.png"
+                style="width: 40px; padding:0;" /></a>
+        <a href="./Page2.html" style="margin-left: 50px;">Password Check</a>
+        <a href="./Page3.html" style="margin-left: 50px;">Stars Rating</a>
+        <a href="./Page4.html" style="margin-left: 50px;">Pictures Carousel</a>
+    </nav>
+
+
+    <script>
+
+        document.write("<div class='outarea'>");
+        document.write("<fieldset>");
+        document.write("<legend>Multiplication Table</legend>");
+        document.write("<div id='writeArea'>");
+
+
+        document.write("<table>")
+        for (let i = 1; i < 10; i++) {
+            document.write('<td class="st1" style="margin-left:30px">')
+            for (let k = 2; k < 10; k++) {
+                document.write(`${k}*${i}=${i * k}` + "<br>");
+            } document.write("</td>")
+        }
+        document.write("</table>")
+
+        document.write("</div>");
+        document.write("</fieldset>");
+        document.write("</div>");
+
+
+    </script>
+
+</body>
+
+</html>
