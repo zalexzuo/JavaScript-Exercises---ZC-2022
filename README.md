@@ -1,10 +1,10 @@
-## JavaScript-Exercises - March 2022\
+## JavaScript-Exercises - March 2022
 \
-####vanillaJS
+#### vanillaJS
 It's a simple Javascript and HTML practice which include 4 pages.\
 You can download it and click any html file to open the page.\
 \
-####Details\
+#### Details
 pange 1:\
 Output multiplication table by Javascript.\
 \
