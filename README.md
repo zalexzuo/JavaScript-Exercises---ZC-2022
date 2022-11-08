@@ -2,7 +2,7 @@
 
 #### vanillaJS
 It's a simple Javascript and HTML practice which include 4 pages.\
-You can download it and click any html file to open the page.\
+You can download it and click any html file to open the page.
 
 #### Details
 pange 1:\
