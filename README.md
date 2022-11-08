@@ -12,7 +12,7 @@ page 2:\
 Form validation by Javascript.\
 \
 page 3:\
-Stars rating bt Javascript.\
+Stars rating by Javascript.\
 \
 page 4:\
 Pictures Carousel function by Javascript.\
